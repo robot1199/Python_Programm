@@ -1,35 +1,25 @@
-class Morph:
-    def __init__(self, *args):
-        self._lst = list(map(lambda x: x.strip(' .,!?;:').lower(), args))
+class Body:
+    def __init__(self, name, ro, volume):
+        self.name = name
+        self.ro = ro
+        self.volume = volume
 
-    def add_word(self, word):
-        w = word.lower()
-        if w not in self._lst:
-            self._lst.append(w)
+    @staticmethod
+    def weith_body(ro, volume):
+        return ro * volume
 
-    def get_words(self):
-        return tuple(self._lst)
+    @classmethod
+    def choose(cls, other):
+        if type(other) in (float, int):
+            return other
+
+        elif isinstance(other, Body):
+            return cls.weith_body(other.ro, other.volume)
+
+        raise ValueError('не дури голову')
 
     def __eq__(self, other):
-        if type(other) != str:
-            raise ValueError('не еби мозги')
-        return other.lower() in self._lst
+        return self.weith_body(self.ro, self.volume) == self.choose(other)
 
-
-
-dict_words = [Morph('связь', 'связи', 'связью', 'связи', 'связей', 'связям', 'связями', 'связях'),
-              Morph('формула', 'формулы', 'формуле', 'формулу', 'формулой', 'формул', 'формулам', 'формулами',
-                    'формулах'),
-              Morph('вектор', 'вектора', 'вектору', 'вектором', 'векторе', 'векторы', 'векторов', 'векторам',
-                    'векторами', 'векторах'),
-              Morph('эффект', 'эффекта', 'эффекту', 'эффектом', 'эффекте', 'эффекты', 'эффектов', 'эффектам',
-                    'эффектами', 'эффектах'),
-              Morph('день', 'дня', 'дню', 'днем', 'дне', 'дни', 'дням', 'днями', 'днях')]
-
-
-text = input()
-words = map(lambda x: x.strip('?!:;,.').lower(), text.split())
-
-res = sum(word == morph for word in words for morph in dict_words)
-print(res)
-
+    def __lt__(self, other):
+       return self.weith_body(self.ro, self.volume) < self.choose(other)
