@@ -15,5 +15,7 @@ class Stack:
     def pr(self):
         return f'привет'
 
+dy = Stack()
+
 
 
