@@ -12,7 +12,8 @@ class Stack:
     def up(self):
         return self.top
 
-
+    def pr(self):
+        return f'привет'
 
 
 
