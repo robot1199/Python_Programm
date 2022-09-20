@@ -1,25 +1,14 @@
-class Body:
-    def __init__(self, name, ro, volume):
-        self.name = name
-        self.ro = ro
-        self.volume = volume
+class StackObj:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
-    @staticmethod
-    def weith_body(ro, volume):
-        return ro * volume
 
-    @classmethod
-    def choose(cls, other):
-        if type(other) in (float, int):
-            return other
+class Stack:
+    def __init__(self):
+        self.top = None
+        self.__count_obj = 0
+        
 
-        elif isinstance(other, Body):
-            return cls.weith_body(other.ro, other.volume)
 
-        raise ValueError('не дури голову')
 
-    def __eq__(self, other):
-        return self.weith_body(self.ro, self.volume) == self.choose(other)
-
-    def __lt__(self, other):
-       return self.weith_body(self.ro, self.volume) < self.choose(other)
