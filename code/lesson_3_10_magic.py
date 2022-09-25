@@ -64,3 +64,75 @@ class TicTacToe:
         r, c = key
         self.pole[r][c].value = value
         self.__update_win_status()
+
+    def init(self):
+        for i in range(self.size):
+            for j in range(self.size):
+                self.pole[i][j].value = 0
+        self.win = 0
+
+    def show(self):
+        for row in self.pole:
+            print(*map(lambda x: "#" if x.value == 0 else x.value, row))
+        print('------------------------------')
+
+    def human_go(self):
+        if not self:
+            return
+
+        while True:
+            i, j = map(int, input('введите координаты клетки').split())
+            if not (0 <= i < self.size) or not (0 <= j < self.size):
+                continue
+            if self[i, j] == self.FREE_CELL:
+                self[i, j] = self.HUMAN_X
+                break
+
+    def computer_go(self):
+        if not self:
+            return
+        while True:
+            i, j = randint(0, self.size - 1), randint(0, self.size - 1)
+            if self[i, j] != self.FREE_CELL:
+                continue
+            self[i, j] = self.COMPUTER_O
+            break
+
+    @property
+    def is_human_win(self):
+        return self.win == 1
+
+    @property
+    def is_computer_win(self):
+        return self.win == 2
+
+    @property
+    def is_draw(self):
+        return self.win == 3.
+
+    def __bool__(self):
+        return self.win == 0 and self.win not in (1, 2, 3)
+
+
+game = TicTacToe()
+game.init()
+step_game = 0
+while game:
+    game.show()
+
+    if step_game % 2 == 0:
+        game.human_go()
+    else:
+        game.computer_go()
+
+    step_game += 1
+
+
+game.show()
+
+if game.is_human_win:
+    print("Поздравляем! Вы победили!")
+elif game.is_computer_win:
+    print("Все получится, со временем")
+else:
+    print("Ничья.")
