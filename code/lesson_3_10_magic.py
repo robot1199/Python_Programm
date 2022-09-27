@@ -43,12 +43,12 @@ class TicTacToe:
             if all(x.value == self.COMPUTER_O for x in (row[i] for row in self.pole)):
                 self.win = 2
                 return
-        if all(self.pole[i][i] == self.HUMAN_X for i in range(self.size)) or \
-                all(self.pole[i][-1 - i] == self.HUMAN_X for i in range(self.size)):
+        if all(self.pole[i][i].value == self.HUMAN_X for i in range(self.size)) or \
+                all(self.pole[i][-1 - i].value == self.HUMAN_X for i in range(self.size)):
             self.win = 1
             return
-        if all(self.pole[i][i] == self.COMPUTER_O for i in range(self.size)) or \
-                all(self.pole[i][-1 - i] == self.COMPUTER_O for i in range(self.size)):
+        if all(self.pole[i][i].value == self.COMPUTER_O for i in range(self.size)) or \
+                all(self.pole[i][-1 - i].value == self.COMPUTER_O for i in range(self.size)):
             self.win = 2
             return
         if all(x.value != self.FREE_CELL for row in self.pole for x in row):
