@@ -17,7 +17,14 @@ class VideoItem():
         self.title = title
         self.descr = descr
         self.path = path
+        self.rating = VideoRating()
+
 
 
 v = VideoItem('Курс по Python ООП', 'Подробный курс по Python ООР', 'D:/videos/python_oop.mp4')
 print(v.rating.rating) # 0
+v.rating.rating = 5
+print(v.rating.rating)
+title = v.title
+descr = v.descr
+v.rating.rating = 6  # ValueError
