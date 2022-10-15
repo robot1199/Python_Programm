@@ -18,12 +18,19 @@ class Aircraft:
         if value <= 0:
             raise TypeError('неверный тип аргумента')
 
+    def _veryfi_int(self, value):
+        if type(value) != int:
+            raise TypeError('неверный тип аргумента')
+
+
+
 
 
 class PassengerAircraft(Aircraft):
     def __init__(self, model, mass, speed, top, chairs):
         super(PassengerAircraft, self).__init__(model, mass, speed, top)
         self._verify_num(chairs)
+        self._veryfi_int(chairs)
         self._chairs = chairs
 
 
