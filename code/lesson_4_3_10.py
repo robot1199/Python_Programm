@@ -17,7 +17,7 @@ class StringDigit(str):
 
     def __radd__(self, other):
         self._veryfi_num(other)
-        return StringDigit(other+ self)
+        return StringDigit(other + self.st)
 
 
 sd = StringDigit("123")
