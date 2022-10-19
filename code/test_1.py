@@ -1,7 +1,10 @@
-def veryfi_num(st):
-    if not all(x.isdigit() for x in st):
-        raise ValueError("в строке должны быть только цифры")
-    print('yes')
+def privet_2(func):
+    def wraper(value):
+        return func(value) * value
+    return wraper
 
+#@privet_2
+def privet(value):
+    return value ** 2
 
-veryfi_num('123456789r')
+print(privet(5))

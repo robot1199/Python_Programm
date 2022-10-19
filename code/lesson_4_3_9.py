@@ -4,7 +4,7 @@ class SoftList(list):
         self.value = value
 
     def __getitem__(self, item):
-        if not(-len(self.value) <= item < len(self.value)):
+        if item > len(self.__class__.__dict__):
             return False
         return self.value[item]
 
