@@ -1,18 +1,7 @@
-class ItemAttrs:
-    def __getitem__(self, item):
-        return self.__dict__[list(self.__dict__)[item]]
-
-    def __setitem__(self, key, value):
-        self.__dict__[list(self.__dict__)[key]] = value
+c = {'_id': 1, '_title': 'Python ООП', '_author': 'Балакирев', '_year': 2022}
 
 
-class Point(ItemAttrs):
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+lst = [f'{i[0]}: {i[1]}' for i in c.items()]
+print('\n'.join(lst))
 
-
-
-
-
-pt = Point(2,4)
+# [print(f'{i[0]}: {i[1]}') for i in c.items()]
