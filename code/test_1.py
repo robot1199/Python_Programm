@@ -1,10 +1,2 @@
-lst_in = input().split()
-
-def f(x):
-    try:
-        int(x)
-        return True
-    except:
-        return False
-
-print(sum(list(map(int, (filter(f, lst_in))))))
+c = [[(i, j) for i in range(3)] for j in range(5, 8)]
+print(c)
