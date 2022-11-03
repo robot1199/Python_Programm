@@ -32,8 +32,8 @@ class IntegerValidator(Basic):
 #     return res
 
 def is_valid(lst, validators):
-    rec = [func(v, value) for value in lst for v in validators if func(v, value) != None]
-    return rec
+    return [value for value in lst for v in validators if func(v, value)]
+
 
 
 def func(f, value):
