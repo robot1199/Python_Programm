@@ -1,12 +1,3 @@
-def get_div(x, y):
-    try:
-        res = x / y
-        return res
-    except ZeroDivisionError:
-        res = 100
-        return res
-    finally:
-        res = -1
-        print(f"finally: {res}")
+c = [1, 2, 3, 5]
+print(' '. join(map(str, c)))
 
-print(get_div(1, 0))
